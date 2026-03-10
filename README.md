@@ -159,16 +159,6 @@ TEXT_MODEL=gpt-4
 ### 基本使用
 
 ```bash
-# Linux / macOS
-uv run pdf-bookmarks input.pdf output.pdf
-
-# Windows
-uv run pdf-bookmarks input.pdf output.pdf
-```
-
-### 通过 main.py 运行
-
-```bash
 # 所有平台
 uv run python src/main.py input.pdf output.pdf
 ```
