@@ -1,0 +1,23 @@
+[project]
+name = "pdf-bookmarks"
+version = "0.1.0"
+description = "Add bookmarks to PDF ebooks based on index pages using vision LLM"
+readme = "README.md"
+authors = [
+    { name = "windusth", email = "windusth2006@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.0.0",
+    "pypdf>=3.0.0",
+    "pymupdf>=1.23.0",
+    "pillow>=10.0.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+pdf-bookmarks = "pdf_bookmarks.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
