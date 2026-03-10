@@ -4,7 +4,7 @@
 
 ## 功能特点
 
-- 自动检测 PDF 中的目录（TOC）页
+- 自动检测 PDF 中的目录页
 - 使用视觉 LLM 提取书签信息
 - 自动计算页码偏移量
 - 支持多层级书签结构
@@ -183,32 +183,11 @@ uv run python src/main.py ~/Documents/ebook.pdf ~/Documents/ebook_with_bookmarks
 uv run python src/main.py C:\Users\YourName\Documents\ebook.pdf C:\Users\YourName\Documents\ebook_with_bookmarks.pdf
 ```
 
-## 项目结构
-
-```
-pdf-bookmarks/
-├── src/
-│   ├── main.py                 # 主入口点
-│   └── pdf_bookmarks/
-│       ├── __init__.py         # 包初始化
-│       ├── cli.py              # 命令行接口
-│       ├── config.py           # 配置管理
-│       ├── utils.py            # 工具函数和日志
-│       ├── image.py            # PDF 图像处理
-│       ├── llm.py              # Vision LLM 客户端
-│       ├── detector.py         # 目录页检测 (TOC)
-│       ├── generator.py        # 书签生成
-│       └── processor.py        # 主处理器
-├── pyproject.toml              # 项目配置
-├── model.env                   # 环境变量配置
-└── README.md
-```
-
 ## 工作原理
 
-1. **扫描 TOC 页**：逐页扫描 PDF，使用视觉 LLM 识别目录（Table of Contents）页
+1. **扫描 TOC 页**：逐页扫描 PDF，使用视觉 LLM 识别目录页
 2. **计算页码偏移**：找到第一个条目的页码，在实际 PDF 中定位其内容，计算偏移量
-3. **提取书签信息**：从 TOC 页提取所有书签条目（仅包含阿拉伯数字页码）
+3. **提取书签信息**：从 TOC 页提取书签条目
 4. **优化书签**：使用文本 LLM 检查和修复书签结构
 5. **应用偏移量**：根据计算的偏移量调整页码
 6. **生成 PDF**：使用 pdftk 将书签应用到 PDF
